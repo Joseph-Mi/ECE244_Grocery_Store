@@ -12,15 +12,25 @@ Customer::Customer(double arrival, int items) {
 
 Customer::~Customer() {}
 
-double Customer::get_arrivalTime() { return arrivalTime; }
+double Customer::get_arrivalTime() { 
+  return arrivalTime; 
+}
 
-double Customer::get_departureTime() { return departureTime; }
+double Customer::get_departureTime() { 
+  return departureTime; 
+}
 
-int Customer::get_numOfItems() { return numOfItems; }
+int Customer::get_numOfItems() { 
+  return numOfItems; 
+}
 
-Customer* Customer::get_next() { return next; }
+Customer* Customer::get_next() { 
+  return next; 
+}
 
-void Customer::set_arrivalTime(double arrival) { arrivalTime = arrival; }
+void Customer::set_arrivalTime(double arrival) { 
+  arrivalTime = arrival; 
+}
 
 void Customer::set_departureTime(double departure) {
   departureTime = departure;

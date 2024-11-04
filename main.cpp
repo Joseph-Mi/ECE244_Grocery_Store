@@ -4,7 +4,7 @@
 #include <sstream>
 
 #include "Customer.h"
-#include "QueueList.h"
+#include "QueueList.h" 
 #include "Register.h"
 #include "RegisterList.h"
 
@@ -126,7 +126,7 @@ void parseRegisterAction(stringstream &lineStream, string mode) {
   }
 }
 
-void openRegister(stringstream &lineStream, string mode) {
+void openRegister(stringstream &lineStream, string mode) 
   int ID;
   double secPerItem, setupTime, timeElapsed;
   // convert strings to int and double
@@ -142,13 +142,33 @@ void openRegister(stringstream &lineStream, string mode) {
   }
 
   // Check if the register is already open
+  if (registerList->foundRegister(ID)) {
+    cout << "Error: Register with ID " << ID << " is already open." << endl;
+    return; // Exit the function if the register is already open
+  }
   // If it's open, print an error message
+
   // Otherwise, open the register
+  Register* newRegister = new Register(ID, secPerItem, setupTime, timeElapsed);
+  newRegister->set_availableTime(timeElapsed); // Set the initial available time
+  newRegister->set_next(nullptr); // Initialize next to nullptr
+
   // If we were simulating a single queue, 
+  newRegister->queue = new QueueList();
+  registerList->enqueue(newRegister);
+  
+  if (mode == "single") {
+      if (singleQueue->get_head() != nullptr) { // Check if there are customers waiting
+          Customer* customer = singleQueue->dequeue(); // Get the first customer from the single queue
+          newRegister->get_queue_list()->enqueue(customer); // Add the customer to the new register's queue
+      }
+  }
+
   // and there were customers in line, then 
   // assign a customer to the new register
+
   
-}
+
 
 void closeRegister(stringstream &lineStream, string mode) {
   int ID;

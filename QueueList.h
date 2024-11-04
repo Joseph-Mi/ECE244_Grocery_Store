@@ -17,8 +17,7 @@ class QueueList {
 
   int get_items();  // gets the number of items in a queue
 
-  void enqueue(
-      Customer* customer);  // insert a customer at the tail of the list
+  void enqueue(Customer* customer);  // insert a customer at the tail of the list
   Customer* dequeue();      // remove a customer from the head of the list
 
   void print();  // prints the customers in a queue

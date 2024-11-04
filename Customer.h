@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-class Customer {
+class Customer { 
  private:
   double arrivalTime;  // when did they arrive, i.e. number of seconds from the
                        // beginning of the experiment

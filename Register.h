@@ -6,7 +6,7 @@
 
 #include "QueueList.h"
 
-class Register {
+class Register { 
  private:
   int ID;
   double secPerItem;
